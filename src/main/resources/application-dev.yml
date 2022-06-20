@@ -1,0 +1,6 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://my-mysql2.mysql.database.azure.com:3306/car_rental?allowMultiQueries=true
+    username: ken
+    password: apple@123

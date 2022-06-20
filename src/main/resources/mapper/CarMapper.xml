@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ken.carrental.repository.CarMapper">
+
+    <select id="findAvailableCarModel" resultType="java.lang.Integer">
+        select
+            distinct c.car_model_id
+        from
+            tb_car c
+        where
+            not exists (
+            select
+                1
+            from
+                tb_order o
+            where
+                o.car_id = c.id
+                and o.status = 1
+                and (o.start_time BETWEEN #{start} and #{end}
+                    or o.end_time BETWEEN #{start} and #{end}))
+        order by c.car_model_id
+    </select>
+</mapper>
+

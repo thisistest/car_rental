@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ken.carrental.repository.CarTimeSlotMapper">
+
+    <update id="acquireTimeSlot">
+        update tb_car_time_slot set status = 1, order_id =#{orderId}, updated_by=#{userId}, updated_time=now() where id in (
+        select id from (
+        select t.id from (
+        select
+                        s.id, s.car_id,
+                        sum(1) over (partition by car_id) as c
+                    from
+                        tb_car_time_slot s
+                    where
+                        s.car_model_id = #{carModelId}
+                        and s.status = 0
+                        and s.time_slot >= #{startTime}
+        <![CDATA[
+                        and s.time_slot < #{endTime}
+        ]]>
+        ) t
+        where t.c = #{timeSlotCount}
+        order by t.car_id
+        limit #{timeSlotCount} ) t
+        )
+    </update>
+</mapper>
+
