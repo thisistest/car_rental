@@ -1,1 +1,1 @@
-hello
+A car rental system.
