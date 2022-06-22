@@ -6,7 +6,7 @@ import lombok.Getter;
  * define business error code and message
  */
 @Getter
-public enum BusinessEnum implements baseEnum {
+public enum BusinessEnum implements BaseEnum {
 
     TEST_ERROR(1001, "test"),
     NO_CAR_AVAILABLE(1001, "no car available"),

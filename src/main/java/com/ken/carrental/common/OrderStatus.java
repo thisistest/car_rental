@@ -3,7 +3,7 @@ package com.ken.carrental.common;
 import lombok.Getter;
 
 @Getter
-public enum OrderStatus implements baseEnum {
+public enum OrderStatus implements BaseEnum {
 
     NORMAL(1, "normal"),
     CANCELED(2, "canceled");

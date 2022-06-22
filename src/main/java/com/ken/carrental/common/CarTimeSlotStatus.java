@@ -3,7 +3,7 @@ package com.ken.carrental.common;
 import lombok.Getter;
 
 @Getter
-public enum CarTimeSlotStatus implements baseEnum {
+public enum CarTimeSlotStatus implements BaseEnum {
 
     USED(1, "used"),
     UNUSED(0, "unused");

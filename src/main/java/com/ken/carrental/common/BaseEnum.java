@@ -3,7 +3,7 @@ package com.ken.carrental.common;
 /**
  * base enum
  */
-public interface baseEnum {
+public interface BaseEnum {
 
     Integer getCode();
 

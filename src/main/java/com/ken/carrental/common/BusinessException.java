@@ -35,7 +35,7 @@ public class BusinessException extends RuntimeException{
         this.message = message;
     }
 
-    public static BusinessException from(baseEnum baseEnum) {
+    public static BusinessException from(BaseEnum baseEnum) {
         BusinessException businessException = new BusinessException();
         businessException.setCode(baseEnum.getCode());
         businessException.setMessage(baseEnum.getMessage());
